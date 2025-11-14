@@ -86,6 +86,10 @@ DATABASES = {
     }
 }
 
+SECRET_KEY = os.environ.get('*cc_0_kxq2ntx(x(6ge)8l&kb&-_qsrxb3&#(=v-!#jn2q@42h', 'unsafe-key')
+ALLOWED_HOSTS = ['.onrender.com', 'localhost']
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
