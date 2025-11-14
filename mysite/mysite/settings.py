@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%=_6i&6%!(-5h7vg(f3c&i$7ulfsx^1lyw1j=1&_@rszqz$ih1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts'
+    
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware' ,
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,20 +74,17 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-# settings.py
-# at top of settings.py before Django loads DB
-import os
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('login'),
-        'USER': os.environ.get('root'),
-        'PASSWORD': os.environ.get('Nani@123'),
-        'HOST': os.environ.get('locahost'),
-        'PORT': os.environ.get('3306', '5432'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'login',
+        'USER': 'root',
+        'PASSWORD': 'Nani@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
 
 
 # Password validation
@@ -124,18 +121,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "accounts/static",
-]
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-import os
-SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-secret-key')
-ALLOWED_HOSTS = ['.onrender.com', 'localhost']
