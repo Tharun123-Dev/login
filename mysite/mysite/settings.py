@@ -74,20 +74,19 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# settings.py
+# at top of settings.py before Django loads DB
 import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('login'),        # Render provides at deployment
+        'NAME': os.environ.get('login'),
         'USER': os.environ.get('root'),
-        'PASSWORD':os.environ.get('Nani@123'),
-        'HOST': os.environ.get('localhost'),
-        'PORT': os.environ.get('DB_PORT', '3306'),
+        'PASSWORD': os.environ.get('Nani@123'),
+        'HOST': os.environ.get('locahost'),
+        'PORT': os.environ.get('3306', '5432'),
     }
 }
-
-SECRET_KEY = os.environ.get('*cc_0_kxq2ntx(x(6ge)8l&kb&-_qsrxb3&#(=v-!#jn2q@42h', 'unsafe-key')
-ALLOWED_HOSTS = ['.onrender.com', 'localhost']
 
 
 
@@ -136,3 +135,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import os
+SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-secret-key')
+ALLOWED_HOSTS = ['.onrender.com', 'localhost']
